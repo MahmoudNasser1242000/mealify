@@ -1,0 +1,1285 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+:root {
+    --main-color: #CE1212;
+    --main-dark-color: #C17E1F;
+
+    --second-background: #EEE;
+    --second-dark-background: #252525;
+    --dark-background: #202020;
+
+    --active-color: #212529;
+    --active-dark-color: #FCFCF5;
+}
+
+::selection {
+    background-color: var(--main-color);
+}
+input[type="checkbox"]:checked {
+    --main-color: var(--main-dark-color);
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.Amatic-font {
+    font-family: 'Amatic SC', sans-serif;
+}
+
+.container {
+    width: 85%;
+    margin: 0 auto;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.fa-sun {
+    display: none !important;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #212529;
+    position: relative;
+}
+
+.title::after {
+    content: "";
+    position: absolute;
+    top: 70%;
+    right: -6px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--main-color);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title span {
+    color: #7F7F90;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.section-title h2,  .section-title h2 span{
+    color: #212529;
+    font-size: 50px;
+    font-weight: 400;
+}
+
+.section-title h2 span {
+    color: var(--main-color);
+}
+
+/* ===============================navbar=============================== */
+nav {
+    padding: 25px 0;
+    box-shadow: 0px 0px 14px #0000001b;   
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+nav main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li {
+    padding: 0 20px;
+}
+
+ul li a {
+    padding-bottom: 6px;
+    color: #808091;
+    font-size: 17px;
+    font-weight: 600;
+    text-transform: capitalize;
+    transition: all 1s;
+    position: relative;
+}
+
+ul li a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    left: 0;
+    top: 100%;
+    height: 2px;
+    background-color: var(--main-color);
+    transition: all 1s;
+}
+
+/* ===========active link=========== */
+
+nav ul li:has(.active) .active {
+    color: #000;
+    position: relative;
+}
+
+nav ul li:has(.active) .active:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 100%;
+    height: 2px;
+    background-color: var(--main-color);
+}
+
+nav ul li a.active:hover {
+    color: var(--active-color) !important;
+}
+nav ul li a.active:hover::after {
+    width: 100% !important;
+}
+
+nav ul li a:hover {
+    color: var(--active-color);
+}
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.chefs:target ~ nav ul li:has(a[href="#chefs"]) > a {
+    color: var(--active-color);
+}
+.chefs:target ~ nav ul li:has(a[href="#chefs"]) > a::after {
+    width: 100%;
+}
+
+.gallery:target ~ nav ul li:has(a[href="#gallery"]) > a {
+    color: var(--active-color);
+}
+.gallery:target ~ nav ul li:has(a[href="#gallery"]) > a::after {
+    width: 100%;
+}
+
+.contact:target ~ nav ul li:has(a[href="#contact"]) > a {
+    color: var(--active-color);
+}
+.contact:target ~ nav ul li:has(a[href="#contact"]) > a::after {
+    width: 100%;
+}
+
+.chefs:target ~ nav ul li:has(a.active) > a,
+.gallery:target ~ nav ul li:has(a.active) > a,
+.contact:target ~ nav ul li:has(a.active) > a {
+    color: #808091;
+}
+.chefs:target ~ nav ul li:has(a.active) > a::after,
+.gallery:target ~ nav ul li:has(a.active) > a::after,
+.contact:target ~ nav ul li:has(a.active) > a::after {
+    width: 0%;
+}
+
+.home:target ~ nav ul li:has(a[href="#home"]) > a {
+    color: var(--active-color) !important;
+}
+.home:target ~ nav ul li:has(a[href="#home"]) > a::after {
+    width: 100% !important;
+}
+
+/* ============================= */
+
+.mode label i {
+    font-size: 25px;
+    color: #212529;
+}
+.menu {
+    display: none;
+    position: fixed;
+    top: 31px;
+    left: 93%;
+    z-index: 200;
+    border: none;
+    background-color: transparent;
+}
+
+.menu i {
+    font-size: 25px;
+}
+
+aside {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    background-color: rgba(255, 255, 255, 0.6);
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.2s;
+}
+
+aside .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    z-index: 0;
+    background-color: white;
+    transform: translateX(100%);
+    transition: all 1.5s;
+}
+
+.menu:focus + aside {
+    opacity: 1;
+    z-index: 300;
+}
+.menu:focus + aside > .sidebar {
+    transform: translateX(0);
+    z-index: 400;
+}
+
+.sidebar .close {
+    text-align: end;
+    margin-bottom: 40px;
+    padding: 20px 20px 0 0;
+}
+
+.sidebar .close i {
+    font-size: 25px;
+}
+
+.sidebar ul {
+    padding: 0 20px;
+}
+
+.sidebar ul li {
+    color: #808091;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 15px 0;
+    transition: all 1s;
+}
+
+.sidebar ul li a:hover {
+    color: #000;
+    font-size: 17px;
+    font-weight: 600px;
+}
+
+/* =====================dark/light mode===================== */
+
+input[type="checkbox"]:checked ~ nav *:not(ul li a) {
+    color: white;
+    --main-color: var(--main-dark-color);
+    --active-color: var(--active-dark-color);
+}
+
+input[type="checkbox"]:checked ~ nav ul li .active {
+    color: white;
+}
+input[type="checkbox"]:checked ~ nav ul li .active:hover {
+    color: white;
+}
+input[type="checkbox"]:checked ~ nav ul li .active:hover:after {
+    width: 100%;
+}
+
+input[type="checkbox"]:checked ~ nav {
+    background-color: #171717;
+}
+
+input[type="checkbox"]:checked ~ nav + .menu {
+    color: white;
+}
+
+input[type="checkbox"]:checked ~ aside {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+input[type="checkbox"]:checked ~ aside .sidebar .close i {
+    color: #000;
+}
+
+/* ======================================================== */
+
+/* ====================media query==================== */
+@media screen and (max-width: 500px) {
+    aside .sidebar {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .menu {
+        display: block !important;
+    }
+
+    nav ul {
+        display: none !important;
+    }
+
+    .fa-moon {
+        padding-right: 20px;
+    }
+}
+/* ================================================== */
+
+/* ===============================home section=============================== */
+
+.home {
+    background-color: var(--second-background);
+    padding-top: 90px;
+    /* height: 100vh; */
+}
+
+.home main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 60px 0;
+}
+
+.home .home-content {
+    width: 40%;
+}
+
+.home .home-content h1 {
+    font-size: 65px;
+    font-weight: 700;
+    color: #37373F;
+    margin-bottom: 20px;
+}
+
+.home .home-content p {
+    color: #4F4F5A;
+    line-height: 25.5px;
+    margin-bottom: 20px;
+}
+
+.home-btns {
+    /* width: 75%; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.home-btns button {
+    background-color: var(--main-color);
+    padding: 12px 28px;
+    color: white;
+    border: none;
+    border-radius: 0 100vh 100vh;
+    font-size: 15px;
+    margin-right: 30px;
+    transition: all 0.5s;
+}
+.home-btns button:hover {
+    background-color: #E51414;
+}
+
+.watch-video {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* width: 47%; */
+}
+
+.watch-video .play-video {
+    width: 27px;
+    height: 54px;
+    border-radius: 60px 0 0 60px;
+    background-color: var(--main-color);
+    position: relative;
+}
+
+.play-video .play-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    left: 7px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    line-height: 40px;
+}
+
+.play-video .play-icon i {
+    font-weight: 900;
+    transition: all 0.5s;
+}
+
+.watch-video a {
+    color: #37373F;
+    font-weight: 600;
+    transition: all 0.5s;
+    padding-left: 40px;
+}
+
+.watch-video:hover i,
+.watch-video:hover a {
+    color: #E51414;
+}
+
+.home img {
+    width: 40%;
+    filter: drop-shadow(4px 4px 9px #000a);
+}
+
+@keyframes img-animation-move {
+    0% {
+        transform: translate(0, 0);
+    }
+    10% {
+        transform: translate(2px, 1px);
+    }
+    20% {
+        transform: translate(3px, 2px);
+    }
+    30% {
+        transform: translate(-2px, -1px);
+    }
+    40% {
+        transform: translate(2px, -1px);
+    }
+    50% {
+        transform: translate(-3px, 0);
+    }
+    60% {
+        transform: translate(1px, -2px);
+    }
+    70% {
+        transform: translate(0, 3px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    90% {
+        transform: translate(-1, 2px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.home main img:hover {
+    animation: img-animation-move 1s infinite;
+}
+
+/* =====================dark/light mode===================== */
+
+input[type="checkbox"]:checked ~ nav .mode label .fa-sun {
+    display: block !important;
+}
+
+input[type="checkbox"]:checked ~ nav .mode label .fa-moon {
+    display: none !important;
+}
+
+input[type="checkbox"]:checked ~ header *:not(p) {
+    --main-color: var(--main-dark-color);
+    color: white;
+}
+input[type="checkbox"]:checked ~ header p {
+    color: #9F9F9F;
+}
+
+input[type="checkbox"]:checked ~ header .home {
+    color: white;
+    --second-background: var(--second-dark-background);
+}
+
+input[type="checkbox"]:checked ~ header .play-video .play-icon i {
+    color: #000 !important;
+}
+
+input[type="checkbox"]:checked ~ header .home-btns button:hover {
+    background-color: #D78C23;
+}
+
+input[type="checkbox"]:checked ~ header .home-content .watch-video:hover i,
+input[type="checkbox"]:checked ~ header .home-content .watch-video:hover a {
+    color: #D78C23 !important;
+}
+
+/* ======================================================== */
+
+/* ====================media query==================== */
+@media screen and (max-width: 992px) {
+    .home main {
+        flex-direction: column-reverse;
+    }
+    .home .home-content {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .home img {
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+    .home-btns {
+        justify-content: space-evenly;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .menu {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    .fa-moon, .fa-sun {
+        padding-right: 20px;
+    }
+}
+/* ================================================== */
+
+/* ===============================chefs section=============================== */
+.chefs {
+    padding: 90px 0;
+    overflow: hidden;
+}
+
+.chefs .chefs-cards {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.chefs-cards .chef-card {
+    width: 31.5%;
+    border-radius: 10px;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.5s;
+}
+.chefs-cards .chef-card:hover {
+    transform: scale(1.1);
+    z-index: 50;
+}
+
+.chef-card .chef-img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    position: relative;
+}
+.chef-card .chef-img::before {
+    content: "";
+    background-image: url("../images/wave.svg");
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 70px;
+    bottom: -1px;
+    left: 0;
+    z-index: 100;
+}
+
+.chef-card img {
+    width: 100%;
+}
+
+.chef-card-content {
+    padding: 30px;
+    text-align: center;
+}
+
+.chef-card-content h3 {
+    font-size: 18.72px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #212529;
+}
+.chef-card-content span {
+    display: inline-block;
+    color: #7F7F90;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.chef-card-content p {
+    color: #7F7F90;
+    font-size: 15px;
+    font-style: italic;
+}
+
+.social-icons {
+    position: absolute;
+    right: 20px;
+    top: 40px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    transform: translateX(280px);
+    transition: all 1s;
+}
+
+.social-icons li {
+    margin-bottom: 15px;
+}
+
+.social-icons i {
+    color: rgba(55, 55, 63, 0.4);
+    font-size: 18px;
+    transition: all 0.6s;
+}
+.social-icons i:hover {
+    color: #47474D;
+}
+
+.chefs-cards .chef-card:hover .social-icons {
+    transform: translateX(0);
+}
+
+/* =====================dark/light mode===================== */
+
+input[type="checkbox"]:checked ~ .chefs {
+    background-color: var(--dark-background);
+    --main-color: var(--main-dark-color);
+}
+
+input[type="checkbox"]:checked ~ .chefs h2,
+input[type="checkbox"]:checked ~ .chefs .chef-card-content h3{
+    color: white !important;
+}
+
+
+
+input[type="checkbox"]:checked ~ .chefs .chef-card-content span, 
+input[type="checkbox"]:checked ~ .chefs .chef-card-content p {
+    color: #9f9f9f;
+}
+
+input[type="checkbox"]:checked ~ .chefs .chef-card-content {
+    background-color: #171717;
+}
+
+input[type="checkbox"]:checked ~ .chefs .chef-card-content {
+    background-color: #171717;
+}
+
+input[type="checkbox"]:checked ~ .chefs .chef-img::before {
+    content: "";
+    background-image: url("../images/wave-dark.svg");
+}
+/* ======================================================== */
+
+/* ====================media query==================== */
+@media screen and (max-width: 600px) {
+    .chefs main {
+        width: 95%;
+    }
+
+    .chefs-cards .chef-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .chefs-cards .chef-card:hover {
+        transform: scale(1);
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 992px) {
+    .chefs-cards .chef-card {
+        width: 47%;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (min-width: 993px) {
+    .chefs-cards .chef-card {
+        width: 31.5%;
+    }
+}
+/* ================================================== */
+
+/* ===============================gallery section=============================== */
+.gallery {
+    background-color: var(--second-background);
+    padding: 90px 0;
+}
+
+.gallery-mails {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    gap: 20px;
+}
+
+.gallery-mails .column-imgs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 32%;
+}
+
+.gallery-mails .mail-img {
+    border: 5px solid white;
+    position: relative;
+    overflow: hidden;
+}
+
+.mail-img img {
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+}
+
+.mail-img .mail-info {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    background-color: rgb(0, 0, 0, 0.6);
+    color: white;
+    transform: translateY(200%);
+    transition: all 0.8s;
+}
+
+.mail-info h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.mail-info p {
+    color: #DDD;
+}
+
+.mail-img:hover img {
+    transform: scale(1.1);
+}
+.mail-img:hover .mail-info {
+    transform: translateY(0);
+}
+
+/* =====================dark/light mode===================== */
+
+input[type="checkbox"]:checked ~ .gallery{
+    background-color: var(--second-dark-background);
+    --main-color: var(--main-dark-color);
+}
+
+input[type="checkbox"]:checked ~ .gallery h2{
+    color: white;
+}
+
+input[type="checkbox"]:checked ~ .gallery h2 span{
+    color: var(--main-dark-color);
+}
+
+/* ======================================================== */
+
+/* ====================media query==================== */
+@media screen and (max-width: 600px) {
+    .gallery main {
+        width: 95%;
+    }
+
+    .gallery-mails .column-imgs {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width:992px) {
+    .gallery{
+        padding: 90px 0 0 !important;
+    }
+
+    .gallery-mails .column-imgs {
+        width: 48%;
+    }
+
+    .column-move {
+        transform: translateY(-155px);
+    }
+}
+
+@media screen and (min-width: 993px) and (max-width:1200px) {
+    .gallery-mails {
+        justify-content: center;
+    }
+    .gallery-mails .column-imgs {
+        width: 30%;
+    }
+}
+
+@media screen and (min-width: 1201px) {
+    .gallery-mails .column-imgs {
+        width: 32%;
+    }
+}
+/* ================================================== */
+
+/* ===============================contact section=============================== */
+.contact {
+    padding: 90px 0;
+}
+
+.contact .map {
+    height: 370px;
+    margin-bottom: 20px;
+}
+
+.map iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.contact-info .our-info {
+    background-color: #F5F5F5;
+    width: 48%;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.our-info .contact-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.our-info .contact-icon i {
+    color: white;
+    font-size: 18px;
+}
+
+.our-info .info-content h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #7D7D7D;
+    margin-bottom: 6px;
+}
+
+.our-info .info-content p * {
+    color: #212529;
+}
+
+.our-info .info-content p span {
+    font-weight: bold;
+}
+
+.contact-form {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.contact-form *:not(button) {
+    padding: 15px;
+    border: 1px solid #E8E3E3;
+    width: 100%;
+    outline: none;
+    margin-bottom: 10px;
+}
+.contact-form *::placeholder {
+    color: #757575;
+    text-transform: capitalize;
+}
+.contact-form *:focus {
+    outline: 1px solid var(--main-color);
+    border: 1px solid var(--main-color);
+}
+
+.contact-form textarea {
+    height: 150px;
+    resize: none;
+    margin-bottom: 30px;
+}
+
+.contact-form .name, .contact-form .email {
+    width: 49%;
+}
+
+.contact-form button[type="submit"] {
+    background-color: var(--main-color);
+    color: white;
+    padding: 14px 40px;
+    border: none;
+    border-radius: 50px;
+    font-size: 15px;
+    margin: 0 auto;
+    transition: all 0.5s;
+    text-transform: capitalize;
+}
+.contact-form button[type="submit"]:hover {
+    background-color: #E51414;
+}
+
+/* =====================dark/light mode===================== */
+
+input[type="checkbox"]:checked ~ .contact {
+    background-color: var(--dark-background);
+}
+
+input[type="checkbox"]:checked ~ .contact * {
+    --main-color: var(--main-dark-color);
+}
+
+input[type="checkbox"]:checked ~ .contact h2 {
+    color: white;
+}
+
+input[type="checkbox"]:checked ~ .contact .our-info {
+    background-color: #0D0D0D;
+}
+
+input[type="checkbox"]:checked ~ .contact .our-info p,
+input[type="checkbox"]:checked ~ .contact .our-info p span,
+input[type="checkbox"]:checked ~ .contact .our-info a {
+    color: white;
+}
+
+input[type="checkbox"]:checked ~ .contact form {
+    background-color: #171717;
+}
+
+input[type="checkbox"]:checked ~ .contact form button[type="submit"]:hover {
+    background-color: #D78C23;
+}
+
+/* ======================================================== */
+
+/* ====================media query==================== */
+@media screen and (max-width: 600px) {
+    .contact main {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contact-info .our-info {
+        width: 100%;
+    }
+
+    .contact-form .name, .contact-form .email {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 992px) {
+    .contact-info .our-info {
+        width: 48%;
+    }
+
+    .contact-form .name, .contact-form .email {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 993px) {
+    .contact-form .name, .contact-form .email {
+        width: 49%;
+    }
+
+    .contact-form {
+        gap: 10px;
+    }
+}
+/* ================================================== */
+
+/* ===============================footer section=============================== */
+footer {
+    padding: 30px 0;
+    background-image: linear-gradient(#0009, #0009), url("../images/textured-metal-background.jpg");
+    /* background-position: center; */
+    background-size: cover;
+    background-repeat: repeat-x;
+}
+
+footer h3 {
+    color: white;
+}
+
+footer main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+/* =================mealify================= */
+.mealify {
+    width: 24%;
+}
+
+.mealify-head {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.mealify a {
+    color: white;
+}
+
+.mealify img {
+    width: 40px;
+    height: 40px;
+}
+
+.mealify p {
+    color: white;
+    margin-bottom: 15px;
+}
+
+.mealify .social-media h3 {
+    text-align: center;
+    font-size: 19px;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+.mealify .social-media h3::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #585858;
+}
+
+.social-media .social-media-icons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.social-media-icons a i {
+    font-size: 24px;
+    color: white;
+}
+
+/* =================subscribe================= */
+.subscribe {
+    width: 48%;
+}
+
+.subscribe h3, .subscribe p {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.subscribe form {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 20px;
+}
+
+.subscribe form input {
+    width: 80%;
+    border: none;
+    outline: none;
+    padding: 11px;
+}
+.subscribe form input::placeholder {
+    color: #757575;
+    text-transform: capitalize;
+}
+
+.subscribe form button {
+    color: white;
+    font-size: 15px;
+    padding: 10px;
+    background-color: var(--main-color);
+    border: none;
+    transition: all 0.5s;
+}
+.subscribe form button:hover {
+    background-color: #E51414;
+}
+
+.subscribe .quick-links h3 {
+    margin-bottom: 12px;
+    text-transform: capitalize;
+}
+
+.quick-links ul {
+    width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2px 8px;
+}
+
+.quick-links ul li{
+    width: 49%;
+    padding: 10px;
+    color: white;
+    transition: all 0.6s;
+}
+
+.quick-links ul li a {
+    font-size: 16px;
+    font-weight: 400;
+    color: white;
+    padding-left: 5px;
+}
+
+.quick-links ul li:hover{
+    transform:translateX(10px);
+    background-color: #222;
+}
+
+/* =================get-in-touch================= */
+.get-in-touch {
+    width: 24%;
+}
+
+.get-in-touch h3 {
+    margin-bottom: 20px;
+}
+
+.get-in-touch ul li{
+    color: white;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.get-in-touch ul li a{
+    color: white;
+}
+
+.get-in-touch ul li i{
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--main-color);
+    padding-right: 15px;
+}
+
+/* =====================dark/light mode===================== */
+
+input[type="checkbox"]:checked ~ footer{
+    --main-color: var(--main-dark-color);
+}
+
+input[type="checkbox"]:checked ~ footer .subscribe form button:hover {
+    background-color: #D78C23;
+}
+/* ======================================================== */
+
+/* ====================media query==================== */
+@media screen and (max-width: 600px) {
+    footer main {
+        width: 95% !important;
+    }
+}
+
+@media screen and (max-width: 646px) {
+    .subscribe form input {
+        width: 100%;
+    }
+
+    .subscribe form button[type="submit"] {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .mealify {
+        width: 100%;
+    }
+
+    .subscribe {
+        width: 100%;
+    }
+
+    .get-in-touch {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    .mealify {
+        width: 48%;
+    }
+
+    .subscribe {
+        width: 100%;
+        order: 3;
+        margin-top: 20px;
+    }
+
+    .get-in-touch {
+        width: 48%;
+        order: 2;
+    }
+}
+/* ================================================== */
